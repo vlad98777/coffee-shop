@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  oracle-db:
+    image: gvenzl/oracle-xe:latest
+    container_name: coffee-shop-oracle
+    environment:
+      - ORACLE_PASSWORD=Admin123
+    ports:
+      - "1521:1521"
+    volumes:
+      - ./sql-scripts:/docker-entrypoint-initdb.d  # АВТОМАТИЧЕСКИЙ ЗАПУСК!
+    restart: unless-stopped
